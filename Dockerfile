@@ -16,4 +16,4 @@ RUN rm -rf /apache-tomcat-9.0.45/webapps/*
 RUN cp -r /boxfuse-sample-java-war-hello/target/* /apache-tomcat-9.0.45/webapps/
 RUN ls /apache-tomcat-9.0.45/webapps/
 EXPOSE 8080
-ENTRYPOINT ["/apache-tomcat-9.0.45/bin/catalina.sh", "start"]
+ENTRYPOINT ["/apache-tomcat-9.0.45/bin/catalina.sh", "run"]
