@@ -5,11 +5,12 @@ RUN apt update && apt dist-upgrade -y
 RUN apt install git -y
 RUN apt install default-jdk -y
 RUN apt install maven -y
-RUN apt install tomcat9 -y
+WORKDIR /var/opt/
+RUN wget https://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-10/v10.0.5/bin/apache-tomcat-10.0.5.tar.gz
+RUN tar -xvf apache-tomcat-10.0.5.tar.gz
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd /boxfuse-sample-java-war-hello && mvn package
-RUN rm -rf /var/lib/tomcat/webapps/*
-RUN cp /boxfuse-sample-java-war-hello/target/hello-1.0.war /var/lib/tomcat9/webapps/
+RUN rm -rf /var/opt/tomcat-10.0.5/webapps/*
+RUN cp /var/opt/boxfuse-sample-java-war-hello/target/hello-1.0.war /var/opt/tomcat-10.0.5/webapps/
 EXPOSE 8080
-RUN chmod 777 -R /usr/share/tomcat9
-CMD ["/usr/share/tomcat9/bin/catalina.sh", "start"]
+CMD ["/var/opt/tomcat-10.0.5/bin/catalina.sh", "start"]
