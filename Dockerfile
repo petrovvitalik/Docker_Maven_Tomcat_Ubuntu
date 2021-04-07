@@ -13,7 +13,7 @@ RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd /var/opt/boxfuse-sample-java-war-hello && mvn package
 RUN ls /var/opt/boxfuse-sample-java-war-hello/target/
 RUN rm -rf /var/opt/apache-tomcat-10.0.5/webapps/*
-RUN cp /var/opt/boxfuse-sample-java-war-hello/target/hello-1.0.war /var/opt/apache-tomcat-10.0.5/webapps/
+RUN cp /var/opt/boxfuse-sample-java-war-hello/target/* /var/opt/apache-tomcat-10.0.5/webapps/
 RUN ls /var/opt/apache-tomcat-10.0.5/webapps/
 EXPOSE 8080
 CMD ["/var/opt/apache-tomcat-10.0.5/bin/catalina.sh", "start"]
