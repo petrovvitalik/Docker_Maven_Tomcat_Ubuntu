@@ -10,7 +10,7 @@ WORKDIR /var/opt/
 RUN wget https://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-10/v10.0.5/bin/apache-tomcat-10.0.5.tar.gz
 RUN tar -xvf apache-tomcat-10.0.5.tar.gz
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-RUN cd /boxfuse-sample-java-war-hello && mvn package
+RUN cd /var/opt/boxfuse-sample-java-war-hello && mvn package
 RUN rm -rf /var/opt/tomcat-10.0.5/webapps/*
 RUN cp /var/opt/boxfuse-sample-java-war-hello/target/hello-1.0.war /var/opt/tomcat-10.0.5/webapps/
 EXPOSE 8080
