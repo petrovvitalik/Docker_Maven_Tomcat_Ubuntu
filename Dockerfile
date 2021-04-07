@@ -6,14 +6,14 @@ RUN apt install wget -y
 RUN apt install git -y
 RUN apt install default-jdk -y
 RUN apt install maven -y
-WORKDIR /var/opt/
+# WORKDIR /var/opt/
 RUN wget https://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-10/v10.0.5/bin/apache-tomcat-10.0.5.tar.gz
 RUN tar -xvf apache-tomcat-10.0.5.tar.gz
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-RUN cd /var/opt/boxfuse-sample-java-war-hello && mvn package
-RUN ls /var/opt/boxfuse-sample-java-war-hello/target/
-RUN rm -rf /var/opt/apache-tomcat-10.0.5/webapps/*
-RUN cp -r /var/opt/boxfuse-sample-java-war-hello/target/* /var/opt/apache-tomcat-10.0.5/webapps/
-RUN ls /var/opt/apache-tomcat-10.0.5/webapps/
+RUN cd /boxfuse-sample-java-war-hello && mvn package
+RUN ls /boxfuse-sample-java-war-hello/target/
+RUN rm -rf /apache-tomcat-10.0.5/webapps/*
+RUN cp -r /boxfuse-sample-java-war-hello/target/* /apache-tomcat-10.0.5/webapps/
+RUN ls /apache-tomcat-10.0.5/webapps/
 EXPOSE 8080
 CMD ["/var/opt/apache-tomcat-10.0.5/bin/catalina.sh", "start"]
