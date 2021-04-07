@@ -14,4 +14,4 @@ RUN cd /var/opt/boxfuse-sample-java-war-hello && mvn package
 RUN rm -rf /var/opt/apache-tomcat-10.0.5/webapps/*
 RUN cp /var/opt/boxfuse-sample-java-war-hello/target/hello-1.0.war /var/opt/apache-tomcat-10.0.5/webapps/
 EXPOSE 8080
-CMD ["/var/opt/tomcat-10.0.5/bin/catalina.sh", "start"]
+CMD ["/var/opt/apache-tomcat-10.0.5/bin/catalina.sh", "start"]
